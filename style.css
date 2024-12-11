@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+body {
+    background-color: #17324f;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+pre {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ff0a;
+}
+
+pre span:first-child {
+    color: rgb(255, 255, 0);
+}
+
+pre span:last-child {
+    color: #795548;
+}
+
+.snow {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+}
+
+.snow-floor {
+    width: 100%;
+    height: 3%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+.title {
+    color: white;
+    font-family: "Lobster";
+    font-weight: lighter;
+    font-size: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fall {
+    0% {
+    top: -100px;
+    }
+
+    100% {
+    top: 100vh;
+    }
+}
+
+.reindeer {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 19px;
+    right: 385px;
+    transform: rotate(0.8deg);
+}
+.nose-reindeer {
+    width: 100px; 
+    height: 50px; 
+    background: linear-gradient(135deg, #290000, #ff3030, #2e0000);
+    background-size: 200% 200%;
+    border-radius: 50% / 50%; 
+    border-color: rgb(134, 0, 0);
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 4px;
+    right: 598px;
+    transition: transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
+    animation: shine 2s linear infinite; 
+    color: red;
+}
+.nose-reindeer:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 45px 15px rgb(255, 38, 38);
+}
+@keyframes shine {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+.luces {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    animation: parpadeo 1.5s infinite alternate;
+}
+
+.luz {
+    width: 15px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+    animation: brillo 1.5s infinite alternate;
+}
+
+.luz.roja { background: red; }
+.luz.amarilla { background: yellow; }
+.luz.verde { background: green; }
+.luz.azul { background: blue; }
+
+  /* Animación de brillo */
+@keyframes brillo {
+    0% {
+    opacity: 0.4;
+    transform: scale(1);
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.8);
+    }
+}
+  /* Animaciones */
+@keyframes aparecer {
+    from {
+    opacity: 0;
+    transform: scale(0.8);
+    }
+    to {
+    opacity: 1;
+    transform: scale(1);
+    }
+}
+
+@keyframes deslizar-abajo {
+    from {
+    transform: translateY(-20px);
+    opacity: 0;
+    }
+    to {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+@keyframes parpadeo {
+    0%, 100% {
+    opacity: 0.5;
+    }
+    50% {
+    opacity: 1;
+    }
+}
+
+#contenido-nuevo {
+    width: 640px;
+    height: 400px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-perspective: 1200px;
+    perspective: 1200px;
+    transition: 1s;
+}
+#contenido-nuevo:hover {
+    transform: rotate(-5deg);
+}
+#contenido-nuevo:hover .outside {
+    transform: rotateY(-130deg);
+}
+.outside,
+.inside {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 50.1%;
+}
+.inside {
+    background: linear-gradient(to right, #00420b ,#009c34 30%);
+    line-height: 3;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    left: 50%;
+}
+.outside {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 1;
+    transform-origin: left;
+    transition: 2s;
+    cursor: pointer;
+}
+.front,
+.back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+}
+.front {
+    background: linear-gradient(to right, #00420b ,#009c34 70%);
+}
+.back {
+    transform: rotateY(180deg);
+    background: linear-gradient(to left, #00420b ,#009c34 30%);
+}
+.santa {
+    height: 350px;
+    background-size: cover;
+    position: absolute;
+    right: 5;
+    bottom: 0px;
+}
+.outside h1 {
+    font-size: 23px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    text-align: center;
+    letter-spacing: 6px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+.phrase {
+    font-size: 20px;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    padding-top: 0px;
+}
+.idk {
+    height: 200px;
+    margin-top: -50px;
+}
+.fondo {
+    background-color: white;
+    padding: 30px;
+    margin: 0px;
+    height: 320px ;
+}
